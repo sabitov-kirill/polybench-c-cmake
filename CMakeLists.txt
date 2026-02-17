@@ -26,13 +26,11 @@ function(add_polybench_child_targets parent_folder)
 
             add_executable(${child_target_name} ${child})
             target_link_libraries(${child_target_name} polybench m)
-            add_push_and_build_for_target(${child_target_name})
             list(APPEND polybench_targets ${child_target_name})
 
             add_executable(${child_timed_target_name} ${child})
             target_link_libraries(${child_timed_target_name} polybench_timed m)
             target_compile_definitions(${child_timed_target_name} PRIVATE POLYBENCH_TIME)
-            add_push_and_build_for_target(${child_timed_target_name})
         endif ()
 
         set(polybench_targets ${polybench_targets} PARENT_SCOPE)
